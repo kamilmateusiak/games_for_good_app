@@ -2,7 +2,13 @@ import '../styles/globals.css'
 import Head from 'next/head'
 import type { AppProps } from 'next/app'
 import { UserProvider } from '@auth0/nextjs-auth0';
-import Navigation from '../components/navigation';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
+import PageLayout from '../components/page-layout';
+
+const queryClient = new QueryClient()
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,8 +19,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <UserProvider>
-        <Component {...pageProps} />
-        <Navigation />
+        <QueryClientProvider client={queryClient}>
+          <PageLayout>
+            <Component {...pageProps} />
+          </PageLayout>
+        </QueryClientProvider>
     </UserProvider>
     </>
   );
