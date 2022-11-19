@@ -4,8 +4,10 @@ export const Wrapper = styled.div`
   display: flex;
   width: fit-content;
   flex-direction: row;
-  gap: 50px;
-  margin: 20px 50px;
+  margin: 20px 0;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 40px;
 `;
 
 export const IconContainer = styled.div`

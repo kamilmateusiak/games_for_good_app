@@ -8,6 +8,6 @@ module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
   compiler: {
-    styledComponents: true
-  }
+    styledComponents: true,
+  },
 })
