@@ -1,4 +1,4 @@
-import Navigation from "../navigation";
+import Menu from "../Menu";
 import { Container, Content, NavWrapper } from "./styles";
 
 interface Props {
@@ -10,7 +10,7 @@ export default function PageLayout(props: Props) {
     <Container>
       <Content>{props.children}</Content>
       <NavWrapper>
-        <Navigation />
+        <Menu />
       </NavWrapper>
     </Container>
   );
