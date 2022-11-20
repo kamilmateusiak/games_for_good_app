@@ -19,6 +19,7 @@ type RankingEntry = { userId: string, username: string, avatarUrl: string, point
 type LeadersResponse = { today: RankingEntry[], week: RankingEntry[], month: RankingEntry[] };
 
 export const getLeaders = (): Promise<LeadersResponse> => {
+  // return ky.get('/ranking').json<LeadersResponse>();
   return new Promise(async (res) => {
     const users = await getRandomUsers();
     console.log(users)
