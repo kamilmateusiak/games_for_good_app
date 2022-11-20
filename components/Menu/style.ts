@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  margin: 5px 10px;
+  border-top: 1px solid black;
+`;
+
 export const Wrapper = styled.div`
   display: flex;
   width: fit-content;
@@ -7,8 +12,8 @@ export const Wrapper = styled.div`
   margin: 20px 0;
   width: 100%;
   justify-content: space-between;
-  padding: 0 40px;
-`;
+  padding: 0px 30px;
+  `;
 
 export const IconContainer = styled.div`
   display: flex;
