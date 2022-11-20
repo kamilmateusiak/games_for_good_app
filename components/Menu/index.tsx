@@ -1,9 +1,23 @@
 import Image from "next/image";
+import { useUser } from '@auth0/nextjs-auth0';
 import Link from "next/link";
 import { Label } from "../../style";
 import { IconContainer, Wrapper } from "./style";
 
 export default function Menu() {
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
+  if (!user) {
+    return null;
+  }
+
+  const handleLogout = () => {
+    window.location.href = window.location.origin + '/api/auth/logout'
+  }
+
   return (
     <Wrapper>
       <Link href={"/"}>
@@ -24,12 +38,10 @@ export default function Menu() {
           <Label>Wall</Label>
         </IconContainer>
       </Link>
-      <Link href={"/"}>
-        <IconContainer>
-          <Image height={40} width={40} src={require('./icons/icon_person.svg')} alt="your profile" />
-          <Label>You</Label>
-        </IconContainer>
-      </Link>
+      <IconContainer onClick={handleLogout}>
+        <Image height={40} width={40} src={require('./icons/icon_person.svg')} alt="your profile" />
+        <Label>You</Label>
+      </IconContainer>
     </Wrapper >
   )
 } 
