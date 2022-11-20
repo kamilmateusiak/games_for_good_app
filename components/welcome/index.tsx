@@ -6,7 +6,7 @@ export default function Welcome() {
   }
 
   const goToCareers = () => {
-    window.open('http://www.smkproduction.eu5.org', '_blank');
+    window.open('https://www.bgk.pl/kariera-w-bgk/oferty-pracy-i-praktyk/', '_blank');
   }
 
   return (
