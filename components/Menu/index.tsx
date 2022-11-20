@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Label } from "../../style";
-import { IconContainer, Wrapper } from "./style";
+import { Container, IconContainer, Wrapper } from "./style";
 
 export default function Menu() {
   return (
+    <Container>
     <Wrapper>
       <Link href={"/"}>
         <IconContainer>
@@ -30,6 +31,7 @@ export default function Menu() {
           <Label>You</Label>
         </IconContainer>
       </Link>
-    </Wrapper >
+      </Wrapper >
+    </Container>
   )
 } 
