@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import { useState } from "react";
 import { getLeaders } from "../../services/api";
 import { Avatar, Bar, ColumnCell, Columns, Tab, Tabs, UserData } from "./styles";
 
-type TabType = "today" | "week" | "month";
+export type TabType = "today" | "week" | "month";
 
 const TABS: { id: TabType; label: string }[] = [
   { id: "today", label: "Today" },
@@ -11,9 +10,13 @@ const TABS: { id: TabType; label: string }[] = [
   { id: "month", label: "Month" },
 ];
 
-export default function TopLeaders() {
+interface Props {
+  selectedTab: TabType;
+  setSelectedTab: (tab: TabType) => void;
+}
+
+export default function TopLeaders({ selectedTab, setSelectedTab }: Props) {
   const query = useQuery({ queryKey: ["leaders"], queryFn: getLeaders });
-  const [selectedTab, setSelectedTab] = useState<TabType>("week");
 
   if (query.isLoading) {
     return <div>loading</div>;
@@ -46,7 +49,7 @@ export default function TopLeaders() {
           </ColumnCell>
         ))}
         </Columns>
-      <Columns>
+      <Columns style={{ paddingBottom: '14px' }}>
         {users.map((user, index) => (
           <ColumnCell key={user.userId}>
               <Bar primary={index=== 1} secondary={index === 0} tertiary={index === 2}>
