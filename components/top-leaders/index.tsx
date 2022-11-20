@@ -27,7 +27,7 @@ export default function TopLeaders({ selectedTab, setSelectedTab }: Props) {
   }
 
   const usersData = query.data[selectedTab].slice(0, 3);
-  const users = [usersData[1], usersData[0], usersData[2]];
+  const users = [usersData[1], usersData[0], usersData[2]].filter(Boolean);
 
   return (
     <div>
